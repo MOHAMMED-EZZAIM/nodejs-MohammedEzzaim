@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    .question {
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .question h1 {
+      font-size: 20px;
+      margin-top: 0;
+    }
+    .question p {
+      margin-top: 5px;
+    }
+    .question pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    .question {
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .question h1 {
+      font-size: 20px;
+      margin-top: 0;
+    }
+    .question p {
+      margin-top: 5px;
+    }
+    .question pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    #search {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 1200px;
+    }
+    #search:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="search" placeholder="Rechercher une question..." oninput="searchQuestions()">
+  <div id="questions-container">
+    <div class="question">
+      <h1>1) module.exports/require</h1>
+      <p>result.js</p>
+      <pre><code>function add(a,b){
+    console.log(a+b)
+  }
+  function squer(s){
+    console.log(s*s)
+  }
+  module.exports={add,squer};</code></pre>
+      <p>App.js:</p>
+      <pre><code>console.log("hello")
+  const obj=require("./result.js")
+  console.log(obj)
+  obj.add(20,20)
+  obj.squer(4)
+  hello
+  { add: [Function: add], squer: [Function: squer] }
+  40
+  16</code></pre>
+    </div>
+  
+    <div class="question">
+      <h1>2) Créer un serveur avec http:</h1>
+      <pre><code>
+        const http=require('http') 
+        const server=http.createServer((req,res)=>{
+        res.end("hello in firdt App mohammed ezzaim,")
+  })</code></pre>
+      <pre><code>server.listen(3000, 'localhost', () => {
+    console.log('Server running  at 172.0.0.1');
+  });</code></pre>
+    </div>
+  
+    <div class="question">
+      <h1>3) Lire un fichier HTML:</h1>
+      <p>const http=require('http')</p>
+      <pre><code>
+      const http=require('http') 
+      const fs=require("fs")
+  const server=http.createServer((req,res)=>{
+    fs.readFile('./index.htm',null,(error,data)=>{
+      if(error){
+        res.end("<html><h1>error : !!!!</h1></html>")
+      }else{
+        res.end(data)
+      }
+    })
+  })</code></pre>
+      <pre><code>server.listen(3000, 'localhost', () => {
+    console.log('Server running  at 172.0.0.1.......');
+  });</code></pre>
+    </div>
+  
+    <div class="question">
+      <h1>4) Utilisation du module 'path':</h1>
+      <p>const http=require('http')</p>
+      <pre><code>const fs=require("fs")
+    const url=require('url');
+    const server=http.createServer((req,res)=>{
+      const path=url.parse(req.url).pathname
+      console.log(path)  
+    })
+    server.listen(3000, 'localhost', () => {
+      console.log('Server running  at 172.0.0.1.......');
+    });</code></pre>
+      <p>const http=require('http')</p>
+      <pre><code>const fs=require("fs")
+    const url=require('url');
+    const server=http.createServer((req,res)=>{
+      const path=url.parse(req.url).pathname
+      switch(path){
+        case '/':
+          res.end("hello mohammed this main pages");
+          break;
+        case '/any':
+          res.end("hello mohammed this any pages");
+          break;
+        case '/user':
+          res.end("hello mohammed this user pages");
+          break;
+        default :break;
+      }
+    })
+    server.listen(3000, 'localhost', () => {
+      console.log('Server running  at 172.0.0.1.......');
+    });</code></pre>
+    </div>
+    
+    <div class="question">
+      <h1>5) Fonction pour lire un fichier HTML:</h1>
+      <pre><code>function readez(path,res){
+      fs.readFile(path,null,(error,data)=>{
+        if(error){
+          res.end("<html><h1>error : !!!!</h1></html>")
+        }else{
+          res.end(data)
+        }
+      })
+    }</code></pre>
+    </div>
+    
+    <div class="question">
+      <h1>6) Exemple d'utilisation de la fonction 'readez':</h1>
+      <p>const http=require('http')</p>
+      <pre><code>const fs=require("fs")
+    const url=require('url');
+    const server=http.createServer((req,res)=>{
+      const path=url.parse(req.url).pathname
+      switch(path){
+        case '/':
+          readez('./index.html',res)
+          break;
+        case '/any':
+          readez('./index2.html',res)
+          break;
+        case '/user':
+          readez('./index3.html',res)
+          break;
+        default :break;
+      }
+    })
+    server.listen(3000, 'localhost', () => {
+      console.log('Server running  at 172.0.0.1.......');
+    });</code></pre>
+    </div>
+    
+    <div class="question">
+      <h1>7) Faciliter le travail avec une seule fonction et un fichier:</h1>
+      <p><strong>routing.js</strong></p>
+      <pre><code>const fs=require("fs")
+    const url=require('url');
+    
+    function readez(path,res){
+      fs.readFile(path,null,(error,data)=>{
+        if(error){
+          res.end("<html><h1>error : !!!!</h1></html>")
+        }else{
+          res.end(data)
+        }
+      })
+    }
+    
+    function routing(req,res){
+      const path=url.parse(req.url).pathname
+      switch(path){
+        case '/':
+          readez('./index.html',res)
+          break;
+        case '/any':
+          readez('./index2.html',res)
+          break;
+        case '/user':
+          readez('./index3.html',res)
+          break;
+        default :break;
+      }
+    }
+    
+    module.exports = routing;</code></pre>
+    </div>
+    
+    <div class="question">
+      <h1>8) Utilisation d'Express:</h1>
+      <pre><code>const express=require('express')
+    const app=express();
+    console.log(app)</code></pre>
+    </div>
+    
+    <div class="question">
+      <h1>9) Création d'un serveur avec Express:</h1>
+      <p><strong>serveur.js</strong></p>
+      <pre><code>const express=require('express')
+    const app=express()
+    app.use((req,res)=>{
+      res.json({
+        massage:"express working",
+        succes:"true",
+        name:"mohammed ezzaim"
+      })
+    })
+    module.exports= app;</code></pre>
+    
+      <p><strong>App.js</strong></p>
+      <pre><code>const http=require('http')
+    const app=require('./serveur.js')
+    const server=http.createServer(app)
+    server.listen(3000, 'localhost', () => {
+      console.log('Server running  at 172.0.0.1.......');
+    });</code></pre>
+    </div>
+  </div>
+
+  <script>
+    function searchQuestions() {
+      const searchInput = document.getElementById('search').value.toLowerCase();
+      const questions = document.querySelectorAll('.question');
+
+      questions.forEach(question => {
+        const questionText = question.textContent.toLowerCase();
+        if (questionText.includes(searchInput)) {
+          question.style.display = 'block';
+        } else {
+          question.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

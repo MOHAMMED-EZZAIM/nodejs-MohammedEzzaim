@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours 1</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    h2 {
+        color: #666;
+    }
+
+    code {
+        background-color: #f4f4f4;
+        padding: 5px;
+        border-radius: 3px;
+    }
+</style>
+</head>
+<body>
+
+<h1>I-</h1>
+<ol>
+    <li>Créer un dossier puis l'ouvrir avec Node : <code>cd url</code></li>
+    <li>Initialiser Node : <code>node init</code></li>
+    <li>Ouvrir dans Visual Studio Code</li>
+</ol>
+
+<h1>II-</h1>
+<p>Pour exécuter : <code>node index.js</code>. Si on exécute puis ajoute un chemin, cette nouvelle route n'est pas connue dans le port. Donc, la solution est d'exécuter une nouvelle fois ou exécuter avec <code>npx nodemon index.js</code>.</p>
+
+<h1>III-</h1>
+<ol>
+    <li>
+        <pre><code>app.get("Somme/:n1/:n2",(req,res)=>{
+    res.send(req.params)
+})</code></pre>
+        <p>Résultat : <code>{"number1":"2","number2":"20"}</code></p>
+    </li>
+    <li>
+        <p><code>app.use(express.json())</code> est utilisé lorsque vous travaillez avec le corps de la requête.</p>
+    </li>
+</ol>
+
+<h1>IV-</h1>
+<p>Dans le chemin, on peut ajouter quelques informations :</p>
+<ol>
+    <li>
+        <pre><code>app.get("/findSymmation/:number1/:number2",(req,res)=>{
+    const num1=req.params.number1;
+    const num2=req.params.number2;
+    let reslt=Number(num1)+Number(num2)
+    res.send("la somme est :"+reslt+")
+})</code></pre>
+    </li>
+    <li>
+        <pre><code>app.get("/seehello",(req,res)=>{
+    res.send("Name is :"+req.body.name)
+})</code></pre>
+    </li>
+    <li>
+        <pre><code>app.get("/seehello",(req,res)=>{
+    res.send("Age:"+req.query.age+","+req.body.name)
+})</code></pre>
+    </li>
+</ol>
+
+<h1>V-</h1>
+<ol>
+    <li>
+        <pre><code>app.get("/json",(req,res)=>{
+    res.json({
+        name:req.body.name,
+        age:req.body.age,
+        specialiter:req.body.specialiter,
+        mochkile:req.query.mochkile
+    })
+})</code></pre>
+    </li>
+    <li>
+        <pre><code>app.get("/code-html",(req,res)=>{
+    res.send("&lt;html&gt;&lt;h1&gt;mohammed ezzaim&lt;/h1&gt;&lt;/html&gt;")
+})</code></pre>
+        <p>Envoyer du code HTML.</p>
+    </li>
+    <li>
+        <pre><code>app.get("/ouvert-fileHtml",(req,res)=>{
+    res.sendFile(__dirname +"/views/numbrs.html")
+})</code></pre>
+        <p>Explication du code :<br>
+        <code>res.render('numbrs.ejs', { name:"ezzaim", numbers:numbers })</code><br>
+        Le compilateur cherche un fichier <code>numbrs.ejs</code> dans un répertoire appelé <code>views</code>. Si le fichier est dans un autre répertoire, on doit mettre l'URL complète du fichier.</p>
+    </li>
+</ol>
+
+<p>npm install mongoose</p>
+
+</body>
+</html>
